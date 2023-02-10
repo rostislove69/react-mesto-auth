@@ -20,7 +20,7 @@ function Login(props){
     if (!userData.email || !userData.password){
       return;
     }
-    let {email, password} = userData;
+    const {email, password} = userData;
     props.handleLogin(email,password);
   }
 

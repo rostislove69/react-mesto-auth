@@ -1,4 +1,22 @@
+import { useEffect } from "react";
+
 function PopupWithForm(props) {
+  useEffect(() => {
+    if(!props.isOpen) return;
+
+    const onKeypress = (evt) => {
+      if (evt.key === "Escape") {
+        props.isClose();
+      }
+    };
+
+    document.addEventListener("keydown", onKeypress);
+  
+    return () => {
+      document.removeEventListener("keydown", onKeypress);
+    };
+  }, [props.isOpen]);
+
   return (
     <div
       className={`popup popup_type_${props.name} ${

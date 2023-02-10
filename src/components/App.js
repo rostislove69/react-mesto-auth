@@ -40,17 +40,6 @@ function App() {
 
   useEffect(() => {
     tokenCheck();
-    const onKeypress = (evt) => {
-      if (evt.key === "Escape") {
-        closeAllPopups();
-      }
-    };
-
-    document.addEventListener("keydown", onKeypress);
-
-    return () => {
-      document.removeEventListener("keydown", onKeypress);
-    };
   }, []);
 
   useEffect(() => {
@@ -184,6 +173,8 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+        setErr(true);
+        setIsInfoTolltipPopupOpen(true);
       });
   }
 
@@ -281,12 +272,14 @@ function App() {
         <ImagePopup
           card={selectedCard}
           isOpen={isFullImagePopupOpen}
-          onClose={closeAllPopups}
+          isClose={closeAllPopups}
         />
         <InfoTooltip
           result={err}
           isClose={closeAllPopups}
           isOpen={isInfoTolltipPopupOpen}
+          successMessage="Вы успешно зарегистрировались!"
+          failMessage="Что-то пошло не так! Попробуйте ещё раз."
         />
       </CardContext.Provider>
     </CurrentUserContext.Provider>

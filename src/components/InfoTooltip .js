@@ -1,8 +1,24 @@
-import React from "react";
+import { useEffect } from "react";
 import SuccessImage from "../images/success.svg";
 import FailImage from "../images/fail.svg";
 
 function InfoTooltip(props) {
+  useEffect(() => {
+    if(!props.isOpen) return;
+
+    const onKeypress = (evt) => {
+      if (evt.key === "Escape") {
+        props.isClose();
+      }
+    };
+
+    document.addEventListener("keydown", onKeypress);
+  
+    return () => {
+      document.removeEventListener("keydown", onKeypress);
+    };
+  }, [props.isOpen]);
+
   return (
     <div
       className={`popup popup_type_${props.result ? "success" : "fail"} ${
@@ -23,8 +39,8 @@ function InfoTooltip(props) {
           />
           <h2 className="popup__tooltip-title">
             {!props.result
-              ? "Вы успешно зарегистрировались!"
-              : "Что-то пошло не так! Попробуйте ещё раз."}
+              ? props.successMessage
+              : props.failMessage}
           </h2>
         </form>
       </div>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PopupWithForm from "./PopupWithForm.js";
 
 function DeleteConfirmPopup(props){
-  const [buttonText, setButtonText] = useState();
+  const [buttonText, setButtonText] = useState("");
 
   useEffect(() => {
     setButtonText("Да");

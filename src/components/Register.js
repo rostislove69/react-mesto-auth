@@ -6,7 +6,6 @@ function Register(props){
     email: "",
     password: ""
   });
-  const [err, setErr] = useState(false);
 
   function handleChange(evt){
     const {name, value} = evt.target;
@@ -18,7 +17,7 @@ function Register(props){
 
   function handleSubmit(evt){
     evt.preventDefault();
-    let {email, password} = userData;
+    const {email, password} = userData;
     props.handleRegister(email, password);
   }
 

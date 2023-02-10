@@ -4,7 +4,7 @@ import PopupWithForm from "./PopupWithForm.js";
 function AddPlacePopup(props) {
   const picturesNameRef = useRef();
   const picturesLinkRef = useRef();
-  const [buttonText, setButtonText] = useState();
+  const [buttonText, setButtonText] = useState("");
 
   useEffect(() => {
     picturesNameRef.current.value = "";

@@ -3,7 +3,7 @@ import PopupWithForm from "./PopupWithForm.js";
 
 function EditAvatarPopup(props) {
   const avatarRef = useRef();
-  const [buttonText, setButtonText] = useState();
+  const [buttonText, setButtonText] = useState("");
 
   useEffect(() => {
     avatarRef.current.value = "";
